@@ -1,0 +1,20 @@
+{
+  "components/auth/ForceChangePassword.tsx -> aws-amplify/auth": {
+    "id": 1560,
+    "files": [
+      "static/chunks/560.14deb4361673709c.js"
+    ]
+  },
+  "components/auth/Login.tsx -> aws-amplify/auth": {
+    "id": 1560,
+    "files": [
+      "static/chunks/560.14deb4361673709c.js"
+    ]
+  },
+  "components/case/UploadAttachmentWizard.tsx -> jsqr": {
+    "id": 6624,
+    "files": [
+      "static/chunks/69b2bcf5.426fe80c976eb881.js"
+    ]
+  }
+}
