@@ -9,9 +9,16 @@ const requiredEnvVars = {
 };
 
 // Validate environment variables
+const envVarNames = {
+  authEndpoint: 'NEXT_PUBLIC_AUTH_ENDPOINT',
+  userPoolId: 'NEXT_PUBLIC_USER_POOL_ID',
+  userPoolClientId: 'NEXT_PUBLIC_USER_POOL_CLIENT_ID',
+  region: 'NEXT_PUBLIC_AWS_REGION',
+};
+
 Object.entries(requiredEnvVars).forEach(([key, value]) => {
   if (!value) {
-    throw new Error(`Missing required environment variable: NEXT_PUBLIC_${key.toUpperCase()}`);
+    throw new Error(`Missing required environment variable: ${envVarNames[key as keyof typeof envVarNames]}`);
   }
 });
 
