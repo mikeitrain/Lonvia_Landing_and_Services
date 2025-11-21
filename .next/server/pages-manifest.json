@@ -2,8 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
   "/urology": "pages/urology.js",
-  "/404": "pages/404.js",
-  "/orthopedics": "pages/orthopedics.js"
+  "/internal-medicine": "pages/internal-medicine.js",
+  "/ent": "pages/ent.js",
+  "/": "pages/index.js",
+  "/404": "pages/404.js"
 }

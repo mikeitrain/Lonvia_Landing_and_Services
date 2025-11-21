@@ -30,10 +30,10 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/orthopedics": [
+    "/ent": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/orthopedics.js"
+      "static/chunks/pages/ent.js"
     ],
     "/urology": [
       "static/chunks/webpack.js",
