@@ -5,5 +5,5 @@
   "/": "pages/index.js",
   "/urology": "pages/urology.js",
   "/lonvia-labs": "pages/lonvia-labs.js",
-  "/case/create": "pages/case/create.js"
+  "/404": "pages/404.js"
 }

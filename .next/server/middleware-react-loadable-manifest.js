@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{\"components/case/UploadAttachmentWizard.tsx -> jsqr\":{\"id\":\"components/case/UploadAttachmentWizard.tsx -> jsqr\",\"files\":[\"static/chunks/node_modules_jsqr_dist_jsQR_js.js\"]}}"
+self.__REACT_LOADABLE_MANIFEST="{}"
