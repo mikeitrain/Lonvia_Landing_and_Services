@@ -2,9 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/urology": "pages/urology.js",
-  "/internal-medicine": "pages/internal-medicine.js",
-  "/ent": "pages/ent.js",
   "/": "pages/index.js",
-  "/404": "pages/404.js"
+  "/404": "pages/404.js",
+  "/lonvia-labs": "pages/lonvia-labs.js"
 }
