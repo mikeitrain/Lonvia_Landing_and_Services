@@ -25,6 +25,11 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/case/create": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/case/create.js"
+    ],
     "/lonvia-labs": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
