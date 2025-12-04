@@ -116,6 +116,16 @@ export const NavigationBar: React.FC = () => {
     setIsMenuOpen(false);
   };
 
+  const handlePartnersClick = () => {
+    router.push("/partners");
+    setIsMenuOpen(false);
+  };
+
+  const handleAboutClick = () => {
+    router.push("/about");
+    setIsMenuOpen(false);
+  };
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -216,6 +226,14 @@ export const NavigationBar: React.FC = () => {
             </button>
 
             <button
+              onClick={handlePartnersClick}
+              className="text-foreground-secondary hover:text-primary-600 transition-colors"
+            >
+              {t('nav.partners')}
+            </button>
+
+            <button
+              onClick={handleAboutClick}
               className="text-foreground-secondary hover:text-primary-600 transition-colors"
             >
               {t('nav.about')}
@@ -287,13 +305,19 @@ export const NavigationBar: React.FC = () => {
                 {t('nav.lonviaLabs')}
               </button>
 
-              <Link
-                href="/#about"
-                className="block px-3 py-2 rounded-md text-base font-medium text-foreground-secondary hover:text-primary-600 hover:bg-background-secondary"
-                onClick={() => setIsMenuOpen(false)}
+              <button
+                onClick={handlePartnersClick}
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-foreground-secondary hover:text-primary-600 hover:bg-background-secondary"
+              >
+                {t('nav.partners')}
+              </button>
+
+              <button
+                onClick={handleAboutClick}
+                className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-foreground-secondary hover:text-primary-600 hover:bg-background-secondary"
               >
                 {t('nav.about')}
-              </Link>
+              </button>
 
               <div className="px-3 py-2">
                 <LanguageSelector />

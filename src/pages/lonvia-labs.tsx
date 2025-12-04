@@ -6,22 +6,47 @@ import {
   ClockIcon,
   UserGroupIcon
 } from '@heroicons/react/24/outline';
+import { AnimatedButton } from "@/components/common/AnimatedButton";
+import { Button } from "@/components/common/Button";
+import { Card, CardContent } from "@/components/landing-page/card";
+import { ServiceModal } from "@/components/lonvia-labs/ServiceModal";
+import { serviceDetails } from "@/data/serviceDetails";
 
 export default function LonviaLabsPage() {
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [selectedServiceId, setSelectedServiceId] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleLearnMore = (serviceId: number) => {
+    setSelectedServiceId(serviceId);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedServiceId(null);
+  };
+
+  const handleStartAssessment = () => {
+    setIsModalOpen(false);
+    const service = services.find(s => s.id === selectedServiceId);
+    if (service) {
+      router.push(`/lonvia-labs/questionnaire?category=${service.category}`);
+    }
+  };
 
   const categories = [
     { id: "all", label: "All Services", icon: "🔬" },
-    { id: "hormones", label: "Hormones", icon: "💊" },
+    { id: "hormones", label: "Hormones", icon: "⚡" },
     { id: "aesthetics", label: "Aesthetics", icon: "✨" },
     { id: "metabolic", label: "Metabolic", icon: "⚖️" },
     { id: "cognitive", label: "Cognitive", icon: "🧠" },
-    { id: "mental", label: "Mental Health", icon: "💚" },
-    { id: "longevity", label: "Longevity", icon: "⏳" },
+    { id: "mental", label: "Mental Health", icon: "🧘" },
+    { id: "longevity", label: "Longevity", icon: "🧬" },
     { id: "sexual", label: "Sexual Health", icon: "❤️" },
-    { id: "performance", label: "Performance", icon: "⚡" },
-    { id: "wellness", label: "Wellness", icon: "🌟" }
+    { id: "performance", label: "Performance", icon: "🏃‍♂️" },
+    { id: "wellness", label: "Wellness", icon: "😴" }
   ];
 
   const services = [
@@ -29,7 +54,7 @@ export default function LonviaLabsPage() {
       id: 1,
       title: "Hormone Optimization",
       category: "hormones",
-      icon: "💊",
+      icon: "⚡",
       description: "Comprehensive hormone testing and optimization therapy including testosterone, growth hormone, and thyroid optimization.",
       features: [
         "Testosterone Replacement Therapy (TRT)",
@@ -43,7 +68,7 @@ export default function LonviaLabsPage() {
       id: 2,
       title: "Hair Loss Prevention & Restoration",
       category: "aesthetics",
-      icon: "✨",
+      icon: "💇‍♂️",
       description: "Advanced treatments for male and female pattern baldness using cutting-edge therapies and medications.",
       features: [
         "Finasteride & Dutasteride",
@@ -85,7 +110,7 @@ export default function LonviaLabsPage() {
       id: 5,
       title: "Mental Health & Wellness",
       category: "mental",
-      icon: "💚",
+      icon: "🧘",
       description: "Comprehensive mental health support including stress management, anxiety and depression treatment, and therapeutic interventions.",
       features: [
         "Mental Health Assessment",
@@ -99,7 +124,7 @@ export default function LonviaLabsPage() {
       id: 6,
       title: "Longevity & Anti-Aging",
       category: "longevity",
-      icon: "⏳",
+      icon: "🧬",
       description: "Comprehensive anti-aging protocols including peptide therapy, NAD+ optimization, and longevity biomarkers.",
       features: [
         "Peptide Therapy",
@@ -127,7 +152,7 @@ export default function LonviaLabsPage() {
       id: 8,
       title: "Athletic Performance Enhancement",
       category: "performance",
-      icon: "⚡",
+      icon: "🏃‍♂️",
       description: "Optimize athletic performance through advanced testing, supplementation, and recovery protocols.",
       features: [
         "Performance Testing",
@@ -155,7 +180,7 @@ export default function LonviaLabsPage() {
       id: 10,
       title: "Sleep Optimization",
       category: "wellness",
-      icon: "🌟",
+      icon: "😴",
       description: "Comprehensive sleep analysis and optimization protocols to improve sleep quality and recovery.",
       features: [
         "Sleep Study Analysis",
@@ -168,34 +193,34 @@ export default function LonviaLabsPage() {
   ];
 
   const labPanels = [
-    { name: "Hormone Panel", markers: "25+ markers" },
-    { name: "Metabolic Panel", markers: "30+ markers" },
-    { name: "Cardiovascular", markers: "20+ markers" },
-    { name: "Nutritional Status", markers: "15+ markers" },
-    { name: "Inflammatory Markers", markers: "10+ markers" },
-    { name: "Thyroid Function", markers: "8+ markers" },
-    { name: "Liver Function", markers: "12+ markers" },
-    { name: "Kidney Function", markers: "8+ markers" }
+    { name: "Hormone Panel", markers: "25+ markers", icon: "⚡" },
+    { name: "Metabolic Panel", markers: "30+ markers", icon: "🔥" },
+    { name: "Cardiovascular", markers: "20+ markers", icon: "❤️" },
+    { name: "Nutritional Status", markers: "15+ markers", icon: "🥗" },
+    { name: "Inflammatory Markers", markers: "10+ markers", icon: "🩸" },
+    { name: "Thyroid Function", markers: "8+ markers", icon: "🦋" },
+    { name: "Liver Function", markers: "12+ markers", icon: "🫀" },
+    { name: "Kidney Function", markers: "8+ markers", icon: "💧" }
   ];
 
   const successStories = [
     {
       name: "Marcus T.",
-      age: 34,
+      age: "34",
       program: "Hormone Optimization",
       result: "Increased energy, improved muscle mass, better sleep quality.",
       quote: "After 6 months on TRT, I feel like I'm in my twenties again. My energy is through the roof and my workouts have never been better."
     },
     {
       name: "Jennifer L.",
-      age: 29,
+      age: "29",
       program: "Hair Loss Prevention",
       result: "Significant hair regrowth, improved confidence.",
       quote: "The hair loss program completely changed my life. I've regained not just my hair, but my confidence too."
     },
     {
       name: "David R.",
-      age: 42,
+      age: "42",
       program: "Weight Management",
       result: "Lost 45 lbs, improved metabolic health.",
       quote: "The GLP-1 program helped me lose weight I'd been struggling with for years. The medical supervision made all the difference."
@@ -212,34 +237,48 @@ export default function LonviaLabsPage() {
     return category ? `${category.label} Optimization` : "All Optimization Services";
   };
 
+  const handleStartOptimization = (category: string) => {
+    router.push(`/lonvia-labs/questionnaire?category=${category}`);
+  };
+
   return (
     <div className="bg-background-primary w-full">
-      {/* Hero Section */}
-      <section className="relative bg-[#0E5A46] text-white py-24">
-        <div className="max-w-6xl mx-auto px-8 text-center">
-          <div className="inline-flex items-center gap-2 bg-white bg-opacity-20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-            <span className="text-xl">🔬</span>
-            <span className="text-sm font-semibold">Advanced Health Optimization</span>
-          </div>
+      {/* Hero Section with Image Background */}
+      <section className="relative bg-[#0E5A46] text-white py-24 overflow-hidden">
+        {/* Image Background */}
+        <img
+          src="/images/Gemini_Generated_Image_55smx455smx455sm.png"
+          alt="Lonvia Labs Health Consultation"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ zIndex: 0 }}
+        />
 
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+        {/* Dark Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black bg-opacity-30" style={{ zIndex: 1 }}></div>
+
+        {/* Content */}
+        <div className="relative max-w-6xl mx-auto px-8 text-center" style={{ zIndex: 2 }}>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg">
             Lonvia Labs
           </h1>
 
-          <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto text-gray-100 leading-relaxed">
+          <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto text-gray-100 leading-relaxed drop-shadow-md">
             Optimize your health, enhance your performance, and unlock your full potential with our cutting-edge health optimization protocols.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => router.push('/case/create')}
-              className="bg-white text-[#0E5A46] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg"
+            <AnimatedButton
+              onClick={() => router.push('/lonvia-labs/questionnaire')}
+              className="px-8 py-4 text-lg font-semibold"
             >
               Start Your Journey
-            </button>
-            <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-[#0E5A46] transition-all duration-300">
+            </AnimatedButton>
+            <Button 
+              variant="outline" 
+              className="border-2 border-white text-white hover:bg-white hover:text-[#0E5A46] px-8 py-4 text-lg font-semibold"
+            >
               View Lab Results
-            </button>
+            </Button>
           </div>
         </div>
       </section>
@@ -327,55 +366,86 @@ export default function LonviaLabsPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredServices.map((service) => (
-              <div
+              <Card
                 key={service.id}
-                className="bg-background-secondary border border-border-primary rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
+                className="group hover:shadow-2xl cursor-pointer bg-white hover:bg-gradient-to-br hover:from-white hover:to-green-50/20"
+                style={{
+                  transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1), transform 700ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+                  willChange: 'transform, box-shadow',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-8px) scale(1.01)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                }}
               >
-                <div className="p-6">
-                  <div className="w-14 h-14 rounded-lg bg-primary-100 flex items-center justify-center text-3xl mb-4">
-                    {service.icon}
+                <CardContent className="p-6 h-full flex flex-col">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-center space-x-3">
+                      <div 
+                        className="w-12 h-12 bg-gradient-to-r from-[#10552E] to-[#0d4426] rounded-lg flex items-center justify-center"
+                        style={{
+                          transition: 'all 600ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+                          willChange: 'transform',
+                        }}
+                      >
+                        <span className="text-2xl">{service.icon}</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <h3 className="text-2xl font-semibold mb-3 text-foreground-primary">
+                  <h3 className="text-xl font-bold text-gray-800 mb-4 transition-colors duration-600 ease-in-out group-hover:text-[#10552E]">
                     {service.title}
                   </h3>
 
-                  <p className="text-foreground-secondary mb-6 leading-relaxed">
+                  <p className="text-gray-600 mb-4 flex-grow transition-colors duration-600 ease-in-out group-hover:text-gray-700">
                     {service.description}
                   </p>
 
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-foreground-primary mb-3 uppercase tracking-wide">
+                  <div className="mb-4">
+                    <h4 className="text-sm font-semibold text-gray-700 mb-2 transition-colors duration-600 ease-in-out group-hover:text-[#10552E]">
                       What&apos;s Included:
                     </h4>
-                    <ul className="space-y-2">
+                    <ul className="space-y-1">
                       {service.features.map((feature, index) => (
-                        <li key={index} className="flex items-start gap-2 text-foreground-secondary">
-                          <span className="text-primary-600 mt-1">✓</span>
-                          <span>{feature}</span>
+                        <li key={index} className="flex items-center text-sm text-gray-600 transition-colors duration-600 ease-in-out group-hover:text-gray-700">
+                          <svg className="w-4 h-4 text-[#10552E] mr-2 flex-shrink-0 transition-transform duration-600 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          {feature}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="inline-flex items-center gap-2 bg-primary-50 text-primary-700 px-3 py-1 rounded-full text-sm font-medium mb-6">
-                    <ClockIcon className="w-4 h-4" />
-                    <span>{service.duration}</span>
+                  <div className="mb-6">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 transition-all duration-600 ease-in-out group-hover:bg-[#10552E] group-hover:text-white">
+                      <ClockIcon className="w-3 h-3 mr-1" />
+                      {service.duration}
+                    </span>
                   </div>
 
-                  <div className="flex flex-col gap-3">
-                    <button
-                      onClick={() => router.push('/case/create')}
-                      className="w-full bg-[#10552E] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0d4323] transition-colors duration-200"
+                  <div className="flex flex-col gap-2 mt-auto">
+                    <AnimatedButton
+                      onClick={() => handleStartOptimization(service.category)}
+                      className="w-full"
                     >
                       Start Optimization
-                    </button>
-                    <button className="w-full bg-transparent border-2 border-[#10552E] text-[#10552E] px-6 py-3 rounded-lg font-semibold hover:bg-[#10552E] hover:text-white transition-all duration-200">
+                    </AnimatedButton>
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-[#10552E] text-[#10552E] hover:bg-[#10552E] hover:text-white"
+                      style={{
+                        transition: 'all 600ms cubic-bezier(0.4, 0, 0.2, 1)',
+                      }}
+                      onClick={() => handleLearnMore(service.id)}
+                    >
                       Learn More
-                    </button>
+                    </Button>
                   </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -395,30 +465,30 @@ export default function LonviaLabsPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {labPanels.map((panel, index) => (
-              <div
+              <Card
                 key={index}
-                className="bg-white border border-border-primary rounded-xl p-6 text-center hover:shadow-lg transition-shadow duration-300"
+                className="text-center hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="text-primary-600 mb-3">
-                  <BeakerIcon className="w-10 h-10 mx-auto" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-foreground-primary">
-                  {panel.name}
-                </h3>
-                <p className="text-primary-600 font-medium">
-                  {panel.markers}
-                </p>
-              </div>
+                <CardContent className="p-6">
+                  <div className="text-3xl mb-3">{panel.icon}</div>
+                  <h3 className="font-semibold text-gray-800 mb-2">
+                    {panel.name}
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    {panel.markers}
+                  </p>
+                </CardContent>
+              </Card>
             ))}
           </div>
 
           <div className="text-center">
-            <button
-              onClick={() => router.push('/case/create')}
-              className="bg-[#10552E] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#0d4323] transition-colors duration-200 shadow-lg"
+            <Button 
+              onClick={() => router.push('/lonvia-labs/questionnaire')}
+              className="bg-[#10552E] hover:bg-[#0d4426] text-white px-8 py-4 text-lg font-semibold"
             >
               Order Lab Testing
-            </button>
+            </Button>
           </div>
         </div>
       </section>
@@ -437,39 +507,32 @@ export default function LonviaLabsPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {successStories.map((story, index) => (
-              <div
+              <Card
                 key={index}
-                className="bg-background-secondary border border-border-primary rounded-xl p-8 hover:shadow-xl transition-shadow duration-300"
+                className="hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-primary-600 text-white flex items-center justify-center font-bold text-lg">
-                    {story.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground-primary">
-                      {story.name}, {story.age}
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-[#10552E] rounded-full flex items-center justify-center mr-4">
+                      <span className="text-white font-semibold">
+                        {story.name.split(' ').map(n => n[0]).join('')}
+                      </span>
                     </div>
-                    <div className="text-sm text-primary-600 font-medium">
-                      {story.program}
+                    <div>
+                      <h3 className="font-semibold text-gray-800">{story.name}</h3>
+                      <p className="text-sm text-gray-600">
+                        Age {story.age} • {story.program}
+                      </p>
                     </div>
                   </div>
-                </div>
-
-                <div className="mb-4">
-                  <div className="text-sm font-semibold text-foreground-primary mb-2 uppercase tracking-wide">
-                    Result:
+                  <p className="text-gray-600 mb-4 italic">&ldquo;{story.quote}&rdquo;</p>
+                  <div className="bg-green-50 p-3 rounded-lg">
+                    <p className="text-sm text-green-800 font-medium">
+                      Results: {story.result}
+                    </p>
                   </div>
-                  <p className="text-foreground-secondary font-medium">
-                    {story.result}
-                  </p>
-                </div>
-
-                <div className="border-t border-border-primary pt-4">
-                  <p className="text-foreground-secondary italic leading-relaxed">
-                    &ldquo;{story.quote}&rdquo;
-                  </p>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -486,15 +549,18 @@ export default function LonviaLabsPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <button
-              onClick={() => router.push('/case/create')}
-              className="bg-white text-[#10552E] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg"
+            <AnimatedButton
+              onClick={() => router.push('/lonvia-labs/questionnaire')}
+              className="!bg-white !text-[#10552E] hover:!bg-gray-100 px-8 py-4 text-lg font-semibold"
             >
               Get Started Today
-            </button>
-            <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-[#10552E] transition-all duration-300">
+            </AnimatedButton>
+            <Button 
+              variant="outline"
+              className="border-2 border-white text-white hover:bg-white hover:text-[#10552E] px-8 py-4 text-lg font-semibold"
+            >
               Schedule Consultation
-            </button>
+            </Button>
           </div>
 
           <p className="text-gray-200">
@@ -502,6 +568,14 @@ export default function LonviaLabsPage() {
           </p>
         </div>
       </section>
+
+      {/* Service Details Modal */}
+      <ServiceModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        service={selectedServiceId ? serviceDetails[selectedServiceId] : null}
+        onStartAssessment={handleStartAssessment}
+      />
     </div>
   );
 }
