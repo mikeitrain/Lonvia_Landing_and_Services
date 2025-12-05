@@ -163,30 +163,42 @@ export default function QuestionnairePage() {
 
   const currentQuestions = questionnaireData[selectedCategory] || questionnaireData.hormones;
   
-  // Filter questions based on gender
+  // Gender value normalization - centralizes the mapping between UI display values
+  // and internal filter values to prevent fragile coupling
+  const normalizeGender = (gender: string | undefined): "male" | "female" | "other" | undefined => {
+    if (!gender) return undefined;
+    const normalized = gender.toLowerCase();
+    if (normalized === "male" || normalized === "female" || normalized === "other") {
+      return normalized;
+    }
+    return undefined;
+  };
+  
+  // Filter questions based on gender - uses normalized gender for robust comparison
   const getVisibleQuestions = () => {
-    const gender = answers["gender"]?.toLowerCase();
+    const gender = normalizeGender(answers["gender"]);
     return currentQuestions.filter(q => {
       if (!q.genders) return true;
       if (!gender) return true;
-      return q.genders.includes(gender as "male" | "female" | "other");
+      return q.genders.includes(gender);
     });
   };
   
   const visibleQuestions = getVisibleQuestions();
   
-  // Clamp currentQuestionIndex to valid bounds when visible questions change
-  // This handles the case where user goes back and changes gender, causing
-  // the question set to shrink
-  useEffect(() => {
-    if (currentQuestionIndex >= visibleQuestions.length && visibleQuestions.length > 0) {
-      setCurrentQuestionIndex(visibleQuestions.length - 1);
-    }
-  }, [visibleQuestions.length, currentQuestionIndex]);
+  // Calculate safe index synchronously to handle race condition when gender changes
+  // and user clicks "Next" before useEffect runs
+  const safeIndex = Math.max(0, Math.min(currentQuestionIndex, visibleQuestions.length - 1));
   
-  // Safely get current question with bounds check
-  const safeIndex = Math.min(currentQuestionIndex, visibleQuestions.length - 1);
-  const currentQuestion = visibleQuestions[safeIndex >= 0 ? safeIndex : 0];
+  // Clamp currentQuestionIndex to valid bounds when visible questions change
+  // This updates the state to match the safe index for subsequent renders
+  useEffect(() => {
+    if (currentQuestionIndex !== safeIndex && visibleQuestions.length > 0) {
+      setCurrentQuestionIndex(safeIndex);
+    }
+  }, [visibleQuestions.length, currentQuestionIndex, safeIndex]);
+  
+  const currentQuestion = visibleQuestions[safeIndex];
   const progress = ((safeIndex + 1) / visibleQuestions.length) * 100;
 
   const handleAnswer = (answer: string) => {
@@ -197,8 +209,10 @@ export default function QuestionnairePage() {
     // Prevent progression if required question not answered
     if (!canProceed()) return;
     
-    if (currentQuestionIndex < visibleQuestions.length - 1) {
-      setCurrentQuestionIndex(prev => prev + 1);
+    // Use safeIndex instead of currentQuestionIndex to handle race condition
+    // where gender changes but useEffect hasn't clamped the index yet
+    if (safeIndex < visibleQuestions.length - 1) {
+      setCurrentQuestionIndex(safeIndex + 1);
     } else {
       setIsComplete(true);
       // Store results
@@ -211,8 +225,8 @@ export default function QuestionnairePage() {
   };
 
   const handleBack = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(prev => prev - 1);
+    if (safeIndex > 0) {
+      setCurrentQuestionIndex(safeIndex - 1);
     }
   };
 
