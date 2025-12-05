@@ -174,14 +174,29 @@ export default function QuestionnairePage() {
   };
   
   const visibleQuestions = getVisibleQuestions();
-  const currentQuestion = visibleQuestions[currentQuestionIndex];
-  const progress = ((currentQuestionIndex + 1) / visibleQuestions.length) * 100;
+  
+  // Clamp currentQuestionIndex to valid bounds when visible questions change
+  // This handles the case where user goes back and changes gender, causing
+  // the question set to shrink
+  useEffect(() => {
+    if (currentQuestionIndex >= visibleQuestions.length && visibleQuestions.length > 0) {
+      setCurrentQuestionIndex(visibleQuestions.length - 1);
+    }
+  }, [visibleQuestions.length, currentQuestionIndex]);
+  
+  // Safely get current question with bounds check
+  const safeIndex = Math.min(currentQuestionIndex, visibleQuestions.length - 1);
+  const currentQuestion = visibleQuestions[safeIndex >= 0 ? safeIndex : 0];
+  const progress = ((safeIndex + 1) / visibleQuestions.length) * 100;
 
   const handleAnswer = (answer: string) => {
     setAnswers(prev => ({ ...prev, [currentQuestion.id]: answer }));
   };
 
   const handleNext = () => {
+    // Prevent progression if required question not answered
+    if (!canProceed()) return;
+    
     if (currentQuestionIndex < visibleQuestions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
     } else {

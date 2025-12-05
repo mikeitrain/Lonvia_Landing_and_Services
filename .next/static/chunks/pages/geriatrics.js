@@ -1,0 +1,9 @@
+__turbopack_load_page_chunks__("/geriatrics", [
+  "static/chunks/[root of the server]__68dfdf._.js",
+  "static/chunks/node_modules_next_9fe9a6._.js",
+  "static/chunks/node_modules_react-dom_82bb97._.js",
+  "static/chunks/node_modules_tailwind-merge_dist_bundle-mjs_mjs_e33d9f._.js",
+  "static/chunks/node_modules_057aa4._.js",
+  "static/chunks/src_pages_index_5771e1._.js",
+  "static/chunks/src_pages_index_c7b094._.js"
+])

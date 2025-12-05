@@ -1,0 +1,19 @@
+{
+  "devFiles": [],
+  "ampDevFiles": [],
+  "polyfillFiles": [],
+  "lowPriorityFiles": [],
+  "rootMainFiles": [],
+  "pages": {
+    "/lonvia-labs": [
+      "static/chunks/[root of the server]__c7f69c._.js",
+      "static/chunks/node_modules_next_71458a._.js",
+      "static/chunks/node_modules_react-dom_82bb97._.js",
+      "static/chunks/node_modules_tailwind-merge_dist_bundle-mjs_mjs_e33d9f._.js",
+      "static/chunks/node_modules_44a19c._.js",
+      "static/chunks/src_pages_lonvia-labs_5771e1._.js",
+      "static/chunks/src_pages_lonvia-labs_ec640d._.js"
+    ]
+  },
+  "ampFirstPages": []
+}

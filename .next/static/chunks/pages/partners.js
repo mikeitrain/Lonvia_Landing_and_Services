@@ -1,0 +1,9 @@
+__turbopack_load_page_chunks__("/partners", [
+  "static/chunks/[root of the server]__9cc9f3._.js",
+  "static/chunks/node_modules_next_6a9980._.js",
+  "static/chunks/node_modules_react-dom_82bb97._.js",
+  "static/chunks/node_modules_tailwind-merge_dist_bundle-mjs_mjs_e33d9f._.js",
+  "static/chunks/node_modules_4258f4._.js",
+  "static/chunks/src_pages_partners_5771e1._.js",
+  "static/chunks/src_pages_partners_7c4ba9._.js"
+])
