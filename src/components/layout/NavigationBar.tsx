@@ -131,7 +131,7 @@ export const NavigationBar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-background-primary shadow-lg">
+    <nav className="bg-background-primary shadow-lg fixed top-0 left-0 right-0 z-50">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-end items-center py-2">
           <div className="flex items-center space-x-10">
