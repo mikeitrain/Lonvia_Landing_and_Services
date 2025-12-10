@@ -138,6 +138,10 @@
   --card: var(--background-primary);
   --card-foreground: var(--foreground-primary);
 
+  /* Muted colors (shadcn compatibility) */
+  --muted: var(--gray-100);
+  --muted-foreground: var(--gray-500);
+
   /* Primary color scheme (Brand Deep Green) */
   --primary-50: var(--green-50);
   --primary-100: var(--green-100);

@@ -1,6 +1,7 @@
 import React from "react";
 import { NavigationBar } from "./NavigationBar";
 import { Footer } from "./Footer";
+import { Footer2 } from "@/components/ui/footer2";
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -13,7 +14,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <main className="flex-1 overflow-x-hidden">
                 {children}
             </main>
-            <Footer />
+            <Footer2 />
         </div>
     );
 }; 

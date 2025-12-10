@@ -175,6 +175,11 @@ export default {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
         },
+        // Muted colors (shadcn compatibility)
+        muted: {
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
+        },
       },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
