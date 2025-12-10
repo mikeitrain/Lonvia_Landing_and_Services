@@ -53,53 +53,54 @@ export default function PartnersPage() {
   return (
     <div className="bg-[#F2F0EB] min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-8">
-          <div className="bg-gradient-to-br from-[#1E6B52] to-[#165A45] text-white py-16 md:py-24 px-8 md:px-16 rounded-3xl">
-            <div className="text-center">
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-2 rounded-full mb-8">
-                <span className="text-xl">🤝</span>
-                <span className="text-sm font-semibold uppercase tracking-wide">Vertrauenswürdige Partner</span>
-              </div>
-              
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-                Unsere Partner
-              </h1>
-              
-              <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-white/90 leading-relaxed">
-                Lonvia arbeitet mit führenden Experten und Unternehmen im Bereich Gesundheit, Diagnostik und Nahrungsergänzung zusammen – für Ihre optimale Versorgung.
-              </p>
-            </div>
+      <section className="pt-16 pb-24 md:pt-20 md:pb-32">
+        <div className="max-w-5xl mx-auto px-8">
+          <div className="text-center">
+            <span className="inline-block text-[11px] font-medium text-[#1E6B52] uppercase tracking-[0.2em] mb-6 pb-4 border-b border-[#1E6B52]">
+              Vertrauenswürdige Partner
+            </span>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-[#2C2C2C] mb-8 tracking-tight leading-[1.1]">
+              Unsere Partner
+            </h1>
+            
+            <p className="text-lg md:text-xl text-[#555555] max-w-2xl mx-auto leading-[1.8]">
+              Lonvia arbeitet mit führenden Experten und Unternehmen im Bereich Gesundheit, Diagnostik und Nahrungsergänzung zusammen – für Ihre optimale Versorgung.
+            </p>
           </div>
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="max-w-5xl mx-auto px-8">
+        <div className="border-t border-[#D1D5DB]" />
+      </div>
+
       {/* Clinical Partners */}
-      <section className="py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-[#333333] tracking-tight">
-            Klinische Partner & Ärzte
-          </h2>
-          <p className="text-center text-[#666666] mb-12 max-w-2xl mx-auto leading-relaxed">
-            Medizinische Expertise auf höchstem Niveau für Ihre Gesundheit
-          </p>
+      <section className="py-20 md:py-28">
+        <div className="max-w-5xl mx-auto px-8">
+          <div className="mb-16">
+            <span className="text-[11px] font-medium text-[#1E6B52] uppercase tracking-[0.2em]">01</span>
+            <h2 className="text-2xl md:text-3xl font-light text-[#2C2C2C] mt-3 tracking-tight">
+              Klinische Partner & Ärzte
+            </h2>
+            <p className="text-[#777777] mt-4 max-w-xl leading-[1.7]">
+              Medizinische Expertise auf höchstem Niveau für Ihre Gesundheit
+            </p>
+          </div>
           
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-2 gap-px bg-[#D1D5DB]">
             {clinicalPartners.map((partner, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 transition-all duration-300 hover:translate-y-[-4px]">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <span className="text-xs font-semibold text-[#1E6B52] bg-[#1E6B52]/10 px-4 py-1.5 rounded-full uppercase tracking-wide">
-                      {partner.type}
-                    </span>
-                    <h3 className="text-2xl font-bold mt-4 text-[#333333]">{partner.name}</h3>
-                  </div>
-                </div>
-                <p className="text-[#555555] mb-6 leading-relaxed">{partner.description}</p>
-                <div className="flex flex-wrap gap-2">
+              <div key={index} className="bg-white p-10 md:p-12">
+                <span className="text-[10px] font-medium text-[#1E6B52] uppercase tracking-[0.15em] border border-[#1E6B52] px-3 py-1.5">
+                  {partner.type}
+                </span>
+                <h3 className="text-xl font-medium mt-6 text-[#2C2C2C] tracking-tight">{partner.name}</h3>
+                <p className="text-[#666666] mt-4 leading-[1.7] text-[15px]">{partner.description}</p>
+                <div className="flex flex-wrap gap-3 mt-8 pt-6 border-t border-[#E5E5E5]">
                   {partner.features.map((feature, i) => (
-                    <span key={i} className="text-xs font-medium bg-[#F2F0EB] text-[#555555] px-4 py-1.5 rounded-full">
-                      {feature}
+                    <span key={i} className="text-[11px] text-[#777777] tracking-wide">
+                      {feature}{i < partner.features.length - 1 && <span className="ml-3 text-[#D1D5DB]">·</span>}
                     </span>
                   ))}
                 </div>
@@ -109,44 +110,46 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* Supplement Partners - Featured Moleqlar */}
-      <section className="py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-[#333333] tracking-tight">
-            Supplement & Pharma Partner
-          </h2>
-          <p className="text-center text-[#666666] mb-12 max-w-2xl mx-auto leading-relaxed">
-            Höchste Qualitätsstandards für Ihre Nahrungsergänzung und Medikamente
-          </p>
+      {/* Divider */}
+      <div className="max-w-5xl mx-auto px-8">
+        <div className="border-t border-[#D1D5DB]" />
+      </div>
+
+      {/* Supplement Partners */}
+      <section className="py-20 md:py-28">
+        <div className="max-w-5xl mx-auto px-8">
+          <div className="mb-16">
+            <span className="text-[11px] font-medium text-[#1E6B52] uppercase tracking-[0.2em]">02</span>
+            <h2 className="text-2xl md:text-3xl font-light text-[#2C2C2C] mt-3 tracking-tight">
+              Supplement & Pharma Partner
+            </h2>
+            <p className="text-[#777777] mt-4 max-w-xl leading-[1.7]">
+              Höchste Qualitätsstandards für Ihre Nahrungsergänzung und Medikamente
+            </p>
+          </div>
           
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-2 gap-px bg-[#D1D5DB]">
             {supplementPartners.map((partner, index) => (
               <div 
                 key={index} 
-                className={`bg-white rounded-2xl p-8 transition-all duration-300 hover:translate-y-[-4px] ${
-                  partner.highlight ? 'ring-2 ring-[#1E6B52] relative' : ''
-                }`}
+                className={`bg-white p-10 md:p-12 relative ${partner.highlight ? 'ring-1 ring-[#1E6B52]' : ''}`}
               >
                 {partner.highlight && (
-                  <div className="absolute -top-3 left-6">
-                    <span className="bg-[#1E6B52] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wide">
-                      ⭐ Empfohlener Partner
+                  <div className="absolute top-0 left-10 -translate-y-1/2">
+                    <span className="bg-[#1E6B52] text-white text-[10px] font-medium px-4 py-2 uppercase tracking-[0.15em]">
+                      Empfohlen
                     </span>
                   </div>
                 )}
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <span className="text-xs font-semibold text-[#1E6B52] bg-[#1E6B52]/10 px-4 py-1.5 rounded-full uppercase tracking-wide">
-                      {partner.type}
-                    </span>
-                    <h3 className="text-2xl font-bold mt-4 text-[#333333]">{partner.name}</h3>
-                  </div>
-                </div>
-                <p className="text-[#555555] mb-6 leading-relaxed">{partner.description}</p>
-                <div className="flex flex-wrap gap-2">
+                <span className="text-[10px] font-medium text-[#1E6B52] uppercase tracking-[0.15em] border border-[#1E6B52] px-3 py-1.5">
+                  {partner.type}
+                </span>
+                <h3 className="text-xl font-medium mt-6 text-[#2C2C2C] tracking-tight">{partner.name}</h3>
+                <p className="text-[#666666] mt-4 leading-[1.7] text-[15px]">{partner.description}</p>
+                <div className="flex flex-wrap gap-3 mt-8 pt-6 border-t border-[#E5E5E5]">
                   {partner.features.map((feature, i) => (
-                    <span key={i} className="text-xs font-medium bg-[#F2F0EB] text-[#555555] px-4 py-1.5 rounded-full">
-                      {feature}
+                    <span key={i} className="text-[11px] text-[#777777] tracking-wide">
+                      {feature}{i < partner.features.length - 1 && <span className="ml-3 text-[#D1D5DB]">·</span>}
                     </span>
                   ))}
                 </div>
@@ -156,32 +159,36 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* Lab & Diagnostic Partners */}
-      <section className="py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-[#333333] tracking-tight">
-            Labor & Diagnostik Partner
-          </h2>
-          <p className="text-center text-[#666666] mb-12 max-w-2xl mx-auto leading-relaxed">
-            Präzise Diagnostik als Grundlage für Ihre personalisierte Gesundheitsoptimierung
-          </p>
+      {/* Divider */}
+      <div className="max-w-5xl mx-auto px-8">
+        <div className="border-t border-[#D1D5DB]" />
+      </div>
+
+      {/* Lab Partners */}
+      <section className="py-20 md:py-28">
+        <div className="max-w-5xl mx-auto px-8">
+          <div className="mb-16">
+            <span className="text-[11px] font-medium text-[#1E6B52] uppercase tracking-[0.2em]">03</span>
+            <h2 className="text-2xl md:text-3xl font-light text-[#2C2C2C] mt-3 tracking-tight">
+              Labor & Diagnostik Partner
+            </h2>
+            <p className="text-[#777777] mt-4 max-w-xl leading-[1.7]">
+              Präzise Diagnostik als Grundlage für Ihre personalisierte Gesundheitsoptimierung
+            </p>
+          </div>
           
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-2 gap-px bg-[#D1D5DB]">
             {labPartners.map((partner, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 transition-all duration-300 hover:translate-y-[-4px]">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <span className="text-xs font-semibold text-[#1E6B52] bg-[#1E6B52]/10 px-4 py-1.5 rounded-full uppercase tracking-wide">
-                      {partner.type}
-                    </span>
-                    <h3 className="text-2xl font-bold mt-4 text-[#333333]">{partner.name}</h3>
-                  </div>
-                </div>
-                <p className="text-[#555555] mb-6 leading-relaxed">{partner.description}</p>
-                <div className="flex flex-wrap gap-2">
+              <div key={index} className="bg-white p-10 md:p-12">
+                <span className="text-[10px] font-medium text-[#1E6B52] uppercase tracking-[0.15em] border border-[#1E6B52] px-3 py-1.5">
+                  {partner.type}
+                </span>
+                <h3 className="text-xl font-medium mt-6 text-[#2C2C2C] tracking-tight">{partner.name}</h3>
+                <p className="text-[#666666] mt-4 leading-[1.7] text-[15px]">{partner.description}</p>
+                <div className="flex flex-wrap gap-3 mt-8 pt-6 border-t border-[#E5E5E5]">
                   {partner.features.map((feature, i) => (
-                    <span key={i} className="text-xs font-medium bg-[#F2F0EB] text-[#555555] px-4 py-1.5 rounded-full">
-                      {feature}
+                    <span key={i} className="text-[11px] text-[#777777] tracking-wide">
+                      {feature}{i < partner.features.length - 1 && <span className="ml-3 text-[#D1D5DB]">·</span>}
                     </span>
                   ))}
                 </div>
@@ -190,30 +197,36 @@ export default function PartnersPage() {
           </div>
         </div>
       </section>
+
+      {/* Divider */}
+      <div className="max-w-5xl mx-auto px-8">
+        <div className="border-t border-[#D1D5DB]" />
+      </div>
 
       {/* Trust Section */}
-      <section className="py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#333333] tracking-tight">
+      <section className="py-20 md:py-28">
+        <div className="max-w-5xl mx-auto px-8">
+          <div className="text-center mb-16">
+            <span className="text-[11px] font-medium text-[#1E6B52] uppercase tracking-[0.2em]">04</span>
+            <h2 className="text-2xl md:text-3xl font-light text-[#2C2C2C] mt-3 tracking-tight">
               Qualität & Vertrauen
             </h2>
-            <p className="text-[#666666] max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[#777777] mt-4 max-w-xl mx-auto leading-[1.7]">
               Alle unsere Partner erfüllen strenge Qualitätskriterien und sind für den europäischen Markt zugelassen.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 border border-[#D1D5DB]">
             {[
               { icon: "🏥", title: "Medizinisch geprüft", desc: "Alle Angebote von Ärzten validiert" },
               { icon: "🇪🇺", title: "EU-konform", desc: "DSGVO & EU-Regulierungen" },
               { icon: "🔬", title: "Wissenschaftlich", desc: "Evidenzbasierte Empfehlungen" },
               { icon: "✅", title: "Zertifiziert", desc: "ISO & GMP Standards" },
             ].map((item, i) => (
-              <div key={i} className="bg-white p-6 rounded-2xl text-center">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="font-bold text-[#333333] mb-2">{item.title}</h3>
-                <p className="text-sm text-[#666666] leading-relaxed">{item.desc}</p>
+              <div key={i} className={`bg-white p-8 text-center ${i !== 3 ? 'border-r border-[#D1D5DB]' : ''} ${i < 2 ? 'border-b md:border-b-0' : ''}`}>
+                <div className="text-3xl mb-5">{item.icon}</div>
+                <h3 className="font-medium text-[#2C2C2C] text-sm tracking-tight">{item.title}</h3>
+                <p className="text-[12px] text-[#888888] mt-2 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -221,30 +234,31 @@ export default function PartnersPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-8">
-          <div className="bg-gradient-to-br from-[#1E6B52] to-[#165A45] text-white py-16 md:py-20 px-8 md:px-16 rounded-3xl text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
-              Werden Sie Partner
-            </h2>
-            <p className="text-lg md:text-xl mb-10 text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Sie sind Arzt, Klinik oder Unternehmen im Gesundheitsbereich? 
-              Kontaktieren Sie uns für Partnerschaftsmöglichkeiten.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => router.push('/contact')} 
-                className="bg-white text-[#1E6B52] font-semibold px-8 py-4 rounded-full uppercase tracking-wide hover:bg-white/90 transition-colors duration-200"
-              >
-                Kontakt aufnehmen
-              </button>
-              <button 
-                onClick={() => router.push('/lonvia-labs')}
-                className="border-2 border-white text-white font-semibold px-8 py-4 rounded-full uppercase tracking-wide hover:bg-white hover:text-[#1E6B52] transition-colors duration-200"
-              >
-                Zu Lonvia Labs
-              </button>
-            </div>
+      <section className="py-20 md:py-28 bg-[#1E6B52]">
+        <div className="max-w-3xl mx-auto px-8 text-center">
+          <span className="inline-block text-[11px] font-medium text-white/60 uppercase tracking-[0.2em] mb-6">
+            Partnerschaft
+          </span>
+          <h2 className="text-3xl md:text-4xl font-light text-white mb-6 tracking-tight leading-[1.2]">
+            Werden Sie Partner
+          </h2>
+          <p className="text-lg text-white/80 mb-12 leading-[1.8] max-w-xl mx-auto">
+            Sie sind Arzt, Klinik oder Unternehmen im Gesundheitsbereich? 
+            Kontaktieren Sie uns für Partnerschaftsmöglichkeiten.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => router.push('/contact')} 
+              className="bg-white text-[#1E6B52] text-[13px] font-medium px-10 py-4 uppercase tracking-[0.15em] hover:bg-[#F2F0EB] transition-colors duration-200"
+            >
+              Kontakt aufnehmen
+            </button>
+            <button 
+              onClick={() => router.push('/lonvia-labs')}
+              className="border border-white/40 text-white text-[13px] font-medium px-10 py-4 uppercase tracking-[0.15em] hover:bg-white/10 transition-colors duration-200"
+            >
+              Zu Lonvia Labs
+            </button>
           </div>
         </div>
       </section>
