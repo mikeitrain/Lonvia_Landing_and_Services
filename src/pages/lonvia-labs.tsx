@@ -472,11 +472,11 @@ export default function LonviaLabsPage() {
                 <CardContent className="p-6">
                   <div className="text-3xl mb-3">{panel.icon}</div>
                   <h3 className="font-semibold text-gray-800 mb-2">
-                    {panel.name}
-                  </h3>
+                  {panel.name}
+                </h3>
                   <p className="text-sm text-gray-600">
-                    {panel.markers}
-                  </p>
+                  {panel.markers}
+                </p>
                 </CardContent>
               </Card>
             ))}
@@ -517,14 +517,14 @@ export default function LonviaLabsPage() {
                       <span className="text-white font-semibold">
                         {story.name.split(' ').map(n => n[0]).join('')}
                       </span>
-                    </div>
-                    <div>
+                  </div>
+                  <div>
                       <h3 className="font-semibold text-gray-800">{story.name}</h3>
                       <p className="text-sm text-gray-600">
                         Age {story.age} • {story.program}
-                      </p>
-                    </div>
-                  </div>
+                  </p>
+                </div>
+              </div>
                   <p className="text-gray-600 mb-4 italic">&ldquo;{story.quote}&rdquo;</p>
                   <div className="bg-green-50 p-3 rounded-lg">
                     <p className="text-sm text-green-800 font-medium">
