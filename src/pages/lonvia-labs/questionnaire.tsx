@@ -294,7 +294,7 @@ export default function QuestionnairePage() {
             Back to Lonvia Labs
           </button>
           <span className="text-sm text-gray-500">
-            Question {currentQuestionIndex + 1} of {visibleQuestions.length}
+            Question {safeIndex + 1} of {visibleQuestions.length}
           </span>
         </div>
       </div>
@@ -354,7 +354,7 @@ export default function QuestionnairePage() {
             <Button
               variant="outline"
               onClick={handleBack}
-              disabled={currentQuestionIndex === 0}
+              disabled={safeIndex === 0}
               className="px-6"
             >
               Back
@@ -364,7 +364,7 @@ export default function QuestionnairePage() {
               onClick={handleNext}
               className={!canProceed() ? "opacity-50 cursor-not-allowed" : ""}
             >
-              {currentQuestionIndex === visibleQuestions.length - 1 ? "Complete" : "Continue"}
+              {safeIndex === visibleQuestions.length - 1 ? "Complete" : "Continue"}
             </AnimatedButton>
           </div>
         </div>
